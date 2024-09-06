@@ -4,6 +4,7 @@
         <h4>Nome do cliente: {{ cliente.nome }}</h4>
         <p>E-mail: {{ cliente.email }}</p>
         <p v-show="showIdade">Idade do cliente: {{ cliente.idade }}</p>
+        <p>ID do cliente: {{ cliente.id }}</p>
         <button @click="mudarCor">Mudar Cor</button>
         
     </div>
