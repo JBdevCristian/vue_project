@@ -4,6 +4,7 @@
         <h4>Nome do cliente: {{ cliente.nome }}</h4>
         <p>E-mail: {{ cliente.email }}</p>
         <p v-show="showIdade">Idade do cliente: {{ cliente.idade }}</p>
+        <button @click="mudarCor">Mudar Cor</button>
         
     </div>
 </template>
@@ -19,6 +20,12 @@ export default {
         cliente: Object, //definir tipo
         showIdade: Boolean
 
+    },
+    methods: {
+        mudarCor: function() {
+            console.log("Testando")
+            this.premium = !this.premium;
+        }
     }
 }
 </script>
