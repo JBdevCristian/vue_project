@@ -3,7 +3,7 @@
     <input type="text" v-model="clienteRogerio.nome">
     <input type="text" v-model="clienteRogerio.email">
     <h1>Guia Clientes</h1>
-    <Cliente :cliente="clienteRogerio" :showIdade="false" descicao="testando prop"/>
+    <Cliente :cliente="clienteRogerio" :showIdade="false"/>
 
   </div>
 </template>
