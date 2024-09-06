@@ -12,7 +12,7 @@
 export default {
     data() {
         return {
-            premium: true
+            premium: false
        }
     },
     props: { //sempre passar o objeto props
