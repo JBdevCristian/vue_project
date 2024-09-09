@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>Cadastrar</h1>
+    <p id="nomeErro" v-if="deuErro">O nome de usuario está invalido!</p>
     <input type="text" placeholder="Nome" v-model="nomeField">
     <input type="text" placeholder="e-mail" v-model="emailField">
     <input type="number" placeholder="idade" v-model="idadeField">
@@ -22,6 +23,7 @@ export default {
   name: 'app',
   data() {
     return {
+      deuErro: false,
       nomeField: "",
       emailField: "",
       idadeField: 0,
@@ -47,16 +49,24 @@ export default {
   },
   methods: {
         cadastroUser: function() {
-          this.clientes.push({nome: this.nomeField, email: this.emailField, idade: this.idadeField, id: Date.now()})
+          if(this.nomeField == "" || this.nomeField.length < 3 || this.nomeField == undefined || this.nomeField == " "){
+            this.deuErro = true;
+          } else {
+            this.clientes.push({nome: this.nomeField, email: this.emailField, idade: this.idadeField, id: Date.now()})
           this.nomeField = "";
           this.emailField = "";
           this.idadeField = "";
+          this.deuErro = false;
+          }
+          
         }
       }
 }
 
 </script>
 
-<style>
-
+<style scoped>
+  #nomeErro {
+    color: brown;
+  }
 </style>
