@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+
+    
+
     <h1>Cadastrar</h1>
     <p id="nomeErro" v-if="deuErro">O nome de usuario está invalido!</p>
     <input type="text" placeholder="Nome" v-model="nomeField">
