@@ -6,6 +6,7 @@
         <p v-show="showIdade">Idade do cliente: {{ cliente.idade }}</p>
         <p>ID do cliente: {{ cliente.id }}</p>
         <button @click="mudarCor">Mudar Cor</button>
+        <button @click="deletarUsuario">Deletar</button>
         
     </div>
 </template>
@@ -19,13 +20,16 @@ export default {
     },
     props: { //sempre passar o objeto props
         cliente: Object, //definir tipo
-        showIdade: Boolean
 
     },
     methods: {
         mudarCor: function() {
             console.log("Testando")
             this.premium = !this.premium;
+        },
+        deletarUsuario: function() {
+            console.log("vindo do filho")
+            this.$emit("meDelete", {idCliente: this.cliente.id, componente: this})
         }
     }
 }

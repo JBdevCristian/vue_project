@@ -9,7 +9,8 @@
 
     <h1>Guia Clientes</h1>
     <div v-for="cliente in clientes" :key="cliente.id">
-      <Cliente :cliente="cliente" :showIdade="true"/>
+      <Cliente :cliente="cliente" @meDelete="deletarUs($event)"/>
+
     </div>
 
   </div>
@@ -52,13 +53,18 @@ export default {
           if(this.nomeField == "" || this.nomeField.length < 3 || this.nomeField == undefined || this.nomeField == " "){
             this.deuErro = true;
           } else {
-            this.clientes.push({nome: this.nomeField, email: this.emailField, idade: this.idadeField, id: Date.now()})
+          this.clientes.push({nome: this.nomeField, email: this.emailField, idade: this.idadeField, id: Date.now()})
           this.nomeField = "";
           this.emailField = "";
           this.idadeField = "";
           this.deuErro = false;
           }
           
+        },
+        deletarUs: function($event) {
+          var id = $event.idCliente;
+          var novoArray = this.clientes.filter(cliente => cliente.id !== id);
+          this.clientes = novoArray;
         }
       }
 }
