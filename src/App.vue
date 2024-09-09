@@ -8,7 +8,7 @@
     <button @click="cadastroUser">Cadastrar</button>
 
     <h1>Guia Clientes</h1>
-    <div v-for="cliente in clientes" :key="cliente.id">
+    <div v-for="cliente in orderClientes" :key="cliente.id">
       <Cliente :cliente="cliente" @meDelete="deletarUs($event)"/>
 
     </div>
@@ -17,7 +17,8 @@
 </template>
 
 <script>
-import Cliente from './components/ClienteTeste.vue'
+import _ from 'lodash';
+import Cliente from './components/ClienteTeste.vue';
 //import Produto from './components/ProdutoTeste.vue'
 
 export default {
@@ -65,6 +66,11 @@ export default {
           var id = $event.idCliente;
           var novoArray = this.clientes.filter(cliente => cliente.id !== id);
           this.clientes = novoArray;
+        }
+      },
+      computed: {
+        orderClientes: function() {
+          return _.orderBy(this.clientes, ['nome'], ['asc'])
         }
       }
 }

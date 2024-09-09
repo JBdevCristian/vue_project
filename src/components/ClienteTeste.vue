@@ -41,7 +41,7 @@ export default {
     },
     computed: {
         idEspecial: function(){
-            return (this.cliente.nome + this.cliente.id + this.cliente.email)
+            return (this.cliente.nome + this.cliente.id + this.cliente.email) //metodos que retornam valor
         }
     }
 }
