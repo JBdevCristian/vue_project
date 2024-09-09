@@ -5,8 +5,10 @@
         <p>E-mail: {{ cliente.email | processarEmail}}</p>
         <p v-show="showIdade">Idade do cliente: {{ cliente.idade }}</p>
         <p>ID do cliente: {{ cliente.id }}</p>
+        
         <button @click="mudarCor">Mudar Cor</button>
         <button @click="deletarUsuario">Deletar</button>
+        <h3>Id Especial: {{idEspecial}}</h3>
         
     </div>
 </template>
@@ -35,6 +37,11 @@ export default {
     filters: {
         processarEmail: function(value) {
             return value.toUpperCase();
+        }
+    },
+    computed: {
+        idEspecial: function(){
+            return (this.cliente.nome + this.cliente.id + this.cliente.email)
         }
     }
 }
