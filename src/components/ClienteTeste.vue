@@ -2,7 +2,7 @@
     <div :class="{'cadastro': !premium, 'cadastro-premium': premium}">
         <h1>Informações do Cliente</h1>
         <h4>Nome do cliente: {{ cliente.nome }}</h4>
-        <p>E-mail: {{ cliente.email }}</p>
+        <p>E-mail: {{ cliente.email | processarEmail}}</p>
         <p v-show="showIdade">Idade do cliente: {{ cliente.idade }}</p>
         <p>ID do cliente: {{ cliente.id }}</p>
         <button @click="mudarCor">Mudar Cor</button>
@@ -30,6 +30,11 @@ export default {
         deletarUsuario: function() {
             console.log("vindo do filho")
             this.$emit("meDelete", {idCliente: this.cliente.id, componente: this})
+        }
+    },
+    filters: {
+        processarEmail: function(value) {
+            return value.toUpperCase();
         }
     }
 }
